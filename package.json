@@ -1,0 +1,22 @@
+{
+  "name": "data-structure",
+  "version": "1.0.0",
+  "description": "Lunch'n'learn ",
+  "main": "index.js",
+  "repository": "git@github.com:WoodLeg/atreid-data-structure.git",
+  "author": "Paul Souvestre <paul@qonto.eu>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/main.js",
+    "test": "mocha --require @babel/register --require @babel/polyfill"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "nodemon": "^1.19.3"
+  }
+}
