@@ -1,11 +1,17 @@
 class LinkedList {
   constructor(value) {
+    this._length = 0;
     if (value) {
       this._head = { value, next: null };
+      this._length++;
     } else {
       this._head = null;
     }
     this._tail = this._head;
+  }
+
+  get length() {
+    return this._length;
   }
 
   /**
@@ -28,6 +34,7 @@ class LinkedList {
     }
 
     this._tail = node;
+    this._length++;
   }
 
   /**
@@ -39,10 +46,12 @@ class LinkedList {
 
     const node = { value, next: this._head };
     this._head = node;
+    this._length++;
   }
 
   /**
    * Remove the tail of the list
+   * @returns the value
    */
   removeTail() {
     if (!this._tail) return;
@@ -52,11 +61,17 @@ class LinkedList {
     while (currentNode.next !== this._tail) {
       currentNode = currentNode.next;
     }
-
     this._tail = currentNode;
+    let result = currentNode.next.value;
     this._tail.next = null;
+    this._length--;
+
+    return result;
   }
 
+  /**
+   * Remove the value of the list
+   */
   remove(value) {
     if (!value) return;
     if (!this._head) return;
@@ -79,25 +94,30 @@ class LinkedList {
     }
 
     currentNode.next = nodeToDelete.next;
+    this._length--;
   }
 
   /**
    * Remove the head of the list
+   * @returns the value
    */
   removeHead() {
     if (this._head) {
+      let result = this._head.value;
       this._head = this._head.next;
 
       if (!this._head) {
         this._tail = null;
       }
+      this._length--;
+      return result;
     }
   }
 
   /**
    * Test if the given node is the head of the list
    *
-   * @param node Node to assert
+   * @param value Node to assert
    * @typeparams should be the same type as the list
    * @returns true if the node is the head
    */
