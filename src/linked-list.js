@@ -2,8 +2,7 @@ class LinkedList {
   constructor(value) {
     this._length = 0;
     if (value) {
-      this._head = { value, next: null };
-      this._length++;
+      this.add(value);
     } else {
       this._head = null;
     }
